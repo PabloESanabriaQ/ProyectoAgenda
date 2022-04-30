@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Agenda {
     //Creo la clase agenda con los atributos que va a heredar a las clases hijas.
@@ -6,16 +6,18 @@ public class Agenda {
     protected String nombre;
     protected String descripcion;
     protected String lugar;
-    protected Date fechaInicio;
+    protected LocalDateTime fechaInicio;
 
     //Constructor con todos los atributos;
-    Agenda(int id, String nombre, String descripcion, String lugar, Date fechaInicio){
+    Agenda(int id, String nombre, String descripcion, String lugar, LocalDateTime fechaInicio){
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.lugar = lugar;
         this.fechaInicio = fechaInicio;
     }
+
+    //Getter y setter para todos los atributos excepto el atributo id y fecha.
 
     public int getId(){
         return this.id;
@@ -33,7 +35,7 @@ public class Agenda {
         return this.lugar;
     }
 
-    public Date getFechaInicio(){
+    public LocalDateTime getFechaInicio(){
         return this.fechaInicio;
     }
 

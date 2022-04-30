@@ -1,0 +1,16 @@
+//clase hijo tareas 
+import java.util.Date;
+import java.util.ArrayList;
+
+public class Tarea extends Agenda{
+   protected Date fechaRecordatorio;
+   ArrayList<string> tareas; 
+   tarea(int id, String nombre, String descripcion, Date fechaRecordatorio, Date fechaInicio, ArrayList tareas,){
+       super(int id, String nombre, String descripcion, Date fechaRecordatorio; Date fechaInicio);
+       this.fechaRecordatorio = fechaRecordatorio;
+       this.tareas = tareas;
+   }
+    public Date getFechaFin(){
+        return this.fechaFin;
+    }
+}
