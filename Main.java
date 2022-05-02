@@ -1,11 +1,26 @@
-///probando 
-/// Despues hago los controles ya que quiero hacer como una funcion
-import java.util.Date; 
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocaTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner entrada= new Scanner(System.in); 
+        ////parametros de los constructores
+        String nombre;
+        String descripcion;
+        String lugar;
+        int id_tareas , id_evento, id_recordatorio;///creo un id para cada tipo de clase, para la opcion eliminar
+        int dia, mes, año;
+        LocalDate fecha;
+        LocalTime hora= LocalTime.of(0,0);
+        
+        ///
+        ///creo un arraylist para cada clase
+        ArrayList<Agenda> lista_recordatorio=new ArrayList<>();
+        ArrayList<Evento> lista_evento=new ArrayList<>();
+        ArrayList<Tareas> lista_tareas=new ArrayList<>();
        int n=2;
        int boton;///entrada de introduccion 
        int opcion;///entrada de opciones
@@ -14,20 +29,43 @@ public class Main {
        while(n==2){
         introduccion();
         boton= entrada.nextInt();
-        ///  entrada.skip();///arreglar despues cuando tenga internet xd
-        entrada.nextLine();//// momentaneo
+        entrada.skip("\n");
         switch(boton){
             case 1: 
                 System.out.println("Dime que es lo que quieres ingresar en tu agenda");
                 opciones();
                 opcion= entrada.nextInt();
-                entrada.nextLine();///momentaneo
+                entrada.skip("\n");
                     switch (opcion){
                         case 1:
+
+           
                         break;
                         case 2:
+                            
+
                         break;
                         case 3:
+                            System.out.println("Dime el titulo del recordatorio: ");
+                            nombre=entrada.nextLine();
+                            System.out.println("Dime el recordatorio");
+                            descripcion=entrada.nextLine();
+                            System.out.println("Dime el lugar del recordatorio");///capaz que no va para recordatorio
+                            lugar=entrada.nextLine();
+                            System.out.println("Dime la fecha del recordatorio:");
+                            System.out.println("año");
+                            año= entrada.nextInt();
+                            entrada.skip("\n");
+                            System.out.println("mes");
+                            mes= entrada.nextInt();
+                            entrada.skip("\n");
+                            System.out.println("dia");
+                            dia= entrada.nextInt();
+                            entrada.skip("\n");
+                            fecha=LocaDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
+                            LocalDateTime fecha_hora = LocalDateTime.of(fecha,hora);
+                            lista_recordatorio.add(new Agenda(id_recordatorio,nombre,descripcion,lugar,fecha_hora));
+                            id_recordatorio=id_recordatorio+1;
                         break;
                         default:
                         System.out.println("Error dato ingresado fuera de rango");
@@ -40,7 +78,7 @@ public class Main {
                 System.out.println("Dime lo que quieres eliminar de tu agenda");
                 opciones();
                 opcion=entrada.nextInt();
-                entrada.nextLine();///momentaneo 
+                entrada.skip("\n");
                     switch (opcion){
                         case 1:
                         break;
@@ -57,7 +95,7 @@ public class Main {
                 System.out.println("Dime que elementos quieres ver de la agenda");
                 opciones();
                 opcion= entrada.nextInt();
-                entrada.nextLine();///momentaneo
+                entrada.skip("\n");
                     switch (opcion){
                         case 1:
                         break;
