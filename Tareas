@@ -1,13 +1,14 @@
 //clase hijo tareas 
-import java.util.Date;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Tarea extends Agenda{
-   protected Date fechaRecordatorio;
+   protected LocalDateTime fechaFin;
    ArrayList<string> tareas; 
-   tarea(int id, String nombre, String descripcion, Date fechaRecordatorio, Date fechaInicio, ArrayList tareas,){
-       super(int id, String nombre, String descripcion, Date fechaRecordatorio; Date fechaInicio);
-       this.fechaRecordatorio = fechaRecordatorio;
+   tarea(int id, String nombre, String descripcion,String lugar, LocalDateTime fechaInicio, LocalDateTime fechaFin, ArrayList<String> tareas ){
+       super(int id, String nombre, String descripcion,String lugar, LocalDateTime fechaInicio);
+       this.fechaFin = fechaFin;
        this.tareas = tareas;
    }
     public Date getFechaFin(){
