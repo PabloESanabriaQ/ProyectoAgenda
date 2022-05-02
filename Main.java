@@ -12,6 +12,7 @@ public class Main {
         String descripcion;
         String lugar;
         int id_tareas , id_evento, id_recordatorio;///creo un id para cada tipo de clase, para la opcion eliminar
+        id_recordatorio=0;
         int dia, mes, año;
         LocalDate fecha;
         LocalTime hora= LocalTime.of(0,0);
@@ -19,6 +20,7 @@ public class Main {
         ///
         ///creo un arraylist para cada clase
         //Podemos usar el mismo arraylist para todos, ¿no? Si quieren hacerlo en distintos puede ser, pero mepa que con uno anda. Pablo.
+        ///Eber: me parece bien, el problema es que no sabria como mostrar en pantalla distintos objetos de una misma arraylist
         ArrayList<Agenda> lista_recordatorio=new ArrayList<>();
         //ArrayList<Evento> lista_evento=new ArrayList<>();
         //ArrayList<Tareas> lista_tareas=new ArrayList<>();
@@ -30,7 +32,8 @@ public class Main {
        while(n==2){
         introduccion();
         boton= entrada.nextInt();
-        entrada.skip("\n");
+        entrada.nextLine();
+        
         switch(boton){
             case 1: 
                 System.out.println("Dime que es lo que quieres ingresar en tu agenda");
@@ -49,13 +52,17 @@ public class Main {
                         case 3:
                             //Como .size() devuelve el tamaño del array puedo usar ese número para el próximo ingreso!
                             // Si el tamaño es menor al id del último valor agregado (porque se puede haber eliminado algo) entonces usamos ese id como referencia.
-                            int tamanio = lista_recordatorio.size();
+                            ///Eber: lo puse entre comillas porque no lo entiendo
+                            
+                            /*int tamanio = lista_recordatorio.size();
                             int ultimo_id = lista_recordatorio.indexOf(lista_recordatorio.get(tamanio - 1));
                             if(tamanio < ultimo_id){
                                 id_recordatorio = ultimo_id +1;
                             } else {
                                 id_recordatorio = lista_recordatorio.size();
                             }
+                            */
+                            
                             System.out.println("Dime el titulo del recordatorio: ");
                             nombre=entrada.nextLine();
                             System.out.println("Dime el recordatorio");
@@ -65,13 +72,13 @@ public class Main {
                             System.out.println("Dime la fecha del recordatorio:");
                             System.out.println("año");
                             año= entrada.nextInt();
-                            entrada.skip("\n");
+                            entrada.nextLine();
                             System.out.println("mes");
                             mes= entrada.nextInt();
                             entrada.skip("\n");
                             System.out.println("dia");
                             dia= entrada.nextInt();
-                            entrada.skip("\n");
+                            entrada.nextLine();
                             fecha=LocalDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
                             LocalDateTime fecha_hora = LocalDateTime.of(fecha,hora);
                             lista_recordatorio.add(new Agenda(id_recordatorio,nombre,descripcion,lugar,fecha_hora));
@@ -88,7 +95,7 @@ public class Main {
                 System.out.println("Dime lo que quieres eliminar de tu agenda");
                 opciones();
                 opcion=entrada.nextInt();
-                entrada.skip("\n");
+                entrada.nextLine();
                     switch (opcion){
                         case 1:
                         break;
@@ -105,7 +112,7 @@ public class Main {
                 System.out.println("Dime que elementos quieres ver de la agenda");
                 opciones();
                 opcion= entrada.nextInt();
-                entrada.skip("\n");
+                entrada.nextLine();
                     switch (opcion){
                         case 1:
                         break;
