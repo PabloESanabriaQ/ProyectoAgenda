@@ -49,10 +49,11 @@ public class Main {
                         break;
                         case 3:
                             //Como .size() devuelve el tamaño del array puedo usar ese número para el próximo ingreso!
+                            // Si el tamaño es menor al id del último valor agregado (porque se puede haber eliminado algo) entonces usamos ese id como referencia.
                             int tamanio = lista_recordatorio.size();
                             int ultimo_id = lista_recordatorio.indexOf(lista_recordatorio.get(tamanio - 1));
                             if(tamanio < ultimo_id){
-                                id_recordatorio = ultimo_id;
+                                id_recordatorio = ultimo_id +1;
                             } else {
                                 id_recordatorio = lista_recordatorio.size();
                             }
