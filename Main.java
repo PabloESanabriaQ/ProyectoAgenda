@@ -1,8 +1,9 @@
 import java.time.LocalDateTime;
 import java.time.LocalDate;
-import java.time.LocaTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
+//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
@@ -18,9 +19,10 @@ public class Main {
         
         ///
         ///creo un arraylist para cada clase
+        //Podemos usar el mismo arraylist para todos, ¿no? Si quieren hacerlo en distintos puede ser, pero mepa que con uno anda. Pablo.
         ArrayList<Agenda> lista_recordatorio=new ArrayList<>();
-        ArrayList<Evento> lista_evento=new ArrayList<>();
-        ArrayList<Tareas> lista_tareas=new ArrayList<>();
+        //ArrayList<Evento> lista_evento=new ArrayList<>();
+        //ArrayList<Tareas> lista_tareas=new ArrayList<>();
        int n=2;
        int boton;///entrada de introduccion 
        int opcion;///entrada de opciones
@@ -46,6 +48,14 @@ public class Main {
 
                         break;
                         case 3:
+                            //Como .size() devuelve el tamaño del array puedo usar ese número para el próximo ingreso!
+                            int tamanio = lista_recordatorio.size();
+                            int ultimo_id = lista_recordatorio.indexOf(lista_recordatorio.get(tamanio - 1));
+                            if(tamanio < ultimo_id){
+                                id_recordatorio = ultimo_id;
+                            } else {
+                                id_recordatorio = lista_recordatorio.size();
+                            }
                             System.out.println("Dime el titulo del recordatorio: ");
                             nombre=entrada.nextLine();
                             System.out.println("Dime el recordatorio");
@@ -62,10 +72,10 @@ public class Main {
                             System.out.println("dia");
                             dia= entrada.nextInt();
                             entrada.skip("\n");
-                            fecha=LocaDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
+                            fecha=LocalDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
                             LocalDateTime fecha_hora = LocalDateTime.of(fecha,hora);
                             lista_recordatorio.add(new Agenda(id_recordatorio,nombre,descripcion,lugar,fecha_hora));
-                            id_recordatorio=id_recordatorio+1;
+                            //id_recordatorio=id_recordatorio+1;
                         break;
                         default:
                         System.out.println("Error dato ingresado fuera de rango");
@@ -131,7 +141,7 @@ public class Main {
             System.out.println("1:Ingresar ");
             System.out.println("2:Eliminar");
             System.out.println("3: Ver");
-            System.out.println("4: Cerrar el progrma");
+            System.out.println("4: Cerrar el programa");
     }
     public static void opciones(){
         System.out.println("1: Tareas");
