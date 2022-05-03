@@ -11,7 +11,7 @@ public class Tarea extends Agenda{
        this.fechaFin = fechaFin;
        this.tareas = tareas;
    }
-    public Date getFechaFin(){
+    public LocalDateTime getFechaFin(){///otra correccion que me falto, cambiar date por localdatetime 
         return this.fechaFin;
     }
 }

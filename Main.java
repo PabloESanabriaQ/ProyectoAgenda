@@ -8,26 +8,33 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner entrada= new Scanner(System.in); 
+        ArrayList<Agenda> lista_recordatorio=new ArrayList<>();///arraylist donde se almacena todos los elementos
         ////parametros de los constructores
+        ArrayList<String> invitados=new ArrayList<>();
+        ArrayList<String> tareas= new ArrayList<>();
+        LocalDateTime fecha_inicio= LocalDateTime.now();
+        LocalDateTime fecha_final;
         String nombre;
         String descripcion;
         String lugar;
         int id_tareas , id_evento, id_recordatorio;///creo un id para cada tipo de clase, para la opcion eliminar
         id_recordatorio=0;
+        id_tareas=0;
+        id_evento=0;
         int dia, mes, año;
         LocalDate fecha;
         LocalTime hora= LocalTime.of(0,0);
+        ///clases para comparar
+        Agenda comparar_agenda=new Agenda(0, "", "", "", fecha_inicio);
+        //Evento comparar_evento=new Evento(5, "", "", "",invitados, c,c);
+        //Tareas comparar_tarea=new Tareas(0, "", "", "", c,c,tareas);
+        
+
         ///forma de presentar la fecha y hs
         DateTimeFormatter f =DateTimeFormatter.ofPattern("dd-MMM-yy");
 
         int numero_recordatorio;///lugar que desea eliminar el usuario lista recordatotio
-        ///
-        ///creo un arraylist para cada clase
-        //Podemos usar el mismo arraylist para todos, ¿no? Si quieren hacerlo en distintos puede ser, pero mepa que con uno anda. Pablo.
-        ///Eber: me parece bien, el problema es que no sabria como mostrar en pantalla distintos objetos de una misma arraylist
-        ArrayList<Agenda> lista_recordatorio=new ArrayList<>();
-        //ArrayList<Evento> lista_evento=new ArrayList<>();
-        //ArrayList<Tareas> lista_tareas=new ArrayList<>();
+      
 
        
        int n=2;
@@ -53,6 +60,24 @@ public class Main {
                 entrada.nextLine();
                     switch (opcion){
                         case 1:
+                            System.out.println("Dime el titulo de la tarea: ");
+                            nombre=entrada.nextLine();
+                            System.out.println("Dime el recordatorio");
+                            descripcion=entrada.nextLine();
+                            System.out.println("Dime el lugar del recordatorio");///capaz que no va para recordatorio
+                            lugar=entrada.nextLine();
+                            System.out.println("Dime la fecha del recordatorio:");
+                            System.out.println("año");
+                            año= entrada.nextInt();
+                            entrada.nextLine();
+                            System.out.println("mes");
+                            mes= entrada.nextInt();
+                            entrada.nextLine();
+                            System.out.println("dia");
+                            dia= entrada.nextInt();
+                            entrada.nextLine();
+                            fecha=LocalDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
+                            
 
            
                         break;
@@ -91,8 +116,8 @@ public class Main {
                             dia= entrada.nextInt();
                             entrada.nextLine();
                             fecha=LocalDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
-                            LocalDateTime fecha_hora = LocalDateTime.of(fecha,hora);
-                            lista_recordatorio.add(new Agenda(id_recordatorio,nombre,descripcion,lugar,fecha_hora));
+                            fecha_inicio = LocalDateTime.of(fecha,hora);
+                            lista_recordatorio.add(new Agenda(id_recordatorio,nombre,descripcion,lugar,fecha_inicio));
                             id_recordatorio=id_recordatorio+1;
                         break;
                         default:
@@ -135,15 +160,24 @@ public class Main {
                         case 2:
                         break;
                         case 3:
+                        int hay_elemento=0;
                         for(int i=0; i<lista_recordatorio.size();i++){
-                            System.out.println("numero de recordatorio: "+ (i+1));
+                            if(comparar_agenda.getClass()==lista_recordatorio.get(i).getClass()){
+                            System.out.println("numero de recordatorio: "+ ((lista_recordatorio.get(i).getId())+1));
                             System.out.println("Titulo: "+ lista_recordatorio.get(i).getNombre());
                             System.out.println("Descripcion: "+ lista_recordatorio.get(i).getDescripcion());
                             System.out.println("Lugar: "+ lista_recordatorio.get(i).getLugar());
                             System.out.println("Fecha: "+ lista_recordatorio.get(i).getFechaInicio().format(f));
                             System.out.println("");
+                            hay_elemento=1;
+                            }
 
                         }
+                        
+                        if(hay_elemento==0){
+                            System.out.println("Lo sentimos no hay un recordatorio en esta lista");
+                        }
+                        
                         break;
                         default:
                         System.out.println("Error dato ingresado fuera de rango");
