@@ -7,7 +7,7 @@ public class Tarea extends Agenda{
    protected LocalDateTime fechaFin;
    ArrayList<string> tareas; 
    tarea(int id, String nombre, String descripcion,String lugar, LocalDateTime fechaInicio, LocalDateTime fechaFin, ArrayList<String> tareas ){
-       super(int id, String nombre, String descripcion,String lugar, LocalDateTime fechaInicio);
+       super(id, nombre,  descripcion,lugar,  fechaInicio);///estaban declaradas asi que le saque la declaracion.Eber 
        this.fechaFin = fechaFin;
        this.tareas = tareas;
    }
