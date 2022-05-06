@@ -150,29 +150,29 @@ public class Main {
                     entrada.nextLine();
                         switch (opcion){
                             case 1:
-                            break;
+                                break;
                             case 2:
-                            break;
+                                break;
                             case 3:
-                            int hay_elemento=0;
-                            for(int i=0; i<lista_recordatorio.size();i++){
-                                if(comparar_agenda.getClass() == lista_recordatorio.get(i).getClass()){
-                                System.out.println("numero de recordatorio: "+ ((lista_recordatorio.get(i).getId())+1));
-                                System.out.println("Titulo: "+ lista_recordatorio.get(i).getNombre());
-                                System.out.println("Descripcion: "+ lista_recordatorio.get(i).getDescripcion());
-                                System.out.println("Lugar: "+ lista_recordatorio.get(i).getLugar());
-                                System.out.println("Fecha: "+ lista_recordatorio.get(i).getFechaInicio().format(f));
-                                System.out.println("");
-                                hay_elemento = 1;
-                                }
+                                int hay_elemento=0;
+                                for(int i=0; i<lista_recordatorio.size();i++){
+                                    if(comparar_agenda.getClass() == lista_recordatorio.get(i).getClass()){
+                                    System.out.println("numero de recordatorio: "+ ((lista_recordatorio.get(i).getId())+1));
+                                    System.out.println("Titulo: "+ lista_recordatorio.get(i).getNombre());
+                                    System.out.println("Descripcion: "+ lista_recordatorio.get(i).getDescripcion());
+                                    System.out.println("Lugar: "+ lista_recordatorio.get(i).getLugar());
+                                    System.out.println("Fecha: "+ lista_recordatorio.get(i).getFechaInicio().format(f));
+                                    System.out.println("");
+                                    hay_elemento = 1;
+                                    }
 
-                            }
-                            
-                            if(hay_elemento == 0){
-                                System.out.println("Lo sentimos, no hay un recordatorio en esta lista");
-                            }
-                            
-                            break;
+                                }
+                                
+                                if(hay_elemento == 0){
+                                    System.out.println("Lo sentimos, no hay un recordatorio en esta lista");
+                                }
+                                
+                                break;
                             default:
                                 System.out.println("Error - Dato ingresado fuera de rango");
                                 break;
