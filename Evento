@@ -2,7 +2,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class evento extends Agenda{
+public class Evento extends Agenda{
     protected LocalDateTime fechaFin;
     ArrayList<String> invitados;
 

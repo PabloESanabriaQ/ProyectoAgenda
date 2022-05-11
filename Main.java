@@ -24,10 +24,11 @@ public class Main {
         id_evento = 0;
         int dia, mes, año;
         LocalDate fecha;
-        LocalTime hor a= LocalTime.of(0,0);
+        LocalTime hora= LocalTime.of(0,0);
         ///Clases para comparar
         Agenda comparar_agenda = new Agenda(0, "", "", "", fecha_inicio);
-        //Evento comparar_evento = new Evento(5, "", "", "",invitados, c,c);
+        
+        ///Evento comparar_evento = new Evento(5, "", "", "",invitados, c,c);
         //Tareas comparar_tarea = new Tareas(0, "", "", "", c,c,tareas);
         
 
