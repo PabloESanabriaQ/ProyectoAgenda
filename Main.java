@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        int hay_elemento=0;
         Scanner entrada = new Scanner(System.in); 
         ArrayList<Agenda> lista_recordatorio=new ArrayList<>();///arraylist donde se almacena elementos tipo agenda
         ArrayList<Evento> lista_evento= new ArrayList<>();///Arraylist donde se almacena elementos tipos evento
@@ -103,7 +104,9 @@ public class Main {
                                     tareas.add(i ,entrada.nextLine());
 
                                 }
+                                
                                 lista_tareas.add(new Tareas(id_tareas, nombre, descripcion, lugar, fecha_inicio, fecha_final, tareas));
+                                id_tareas=id_tareas+1;
 
 
 
@@ -163,6 +166,11 @@ public class Main {
                     entrada.nextLine();
                         switch (opcion){
                             case 1:
+                            System.out.println("Dime el numero de la tarea, si no estas seguro ve a la opcion ver");
+                                numero_recordatorio = entrada.nextInt();
+                                entrada.nextLine();
+                                lista_tareas.remove(numero_recordatorio-1);
+                                id_tareas = id_tareas-1;
                                 break;
                             case 2:
                                 break;
@@ -185,13 +193,35 @@ public class Main {
                     entrada.nextLine();
                         switch (opcion){
                             case 1:
+                                for(int i=0;i<lista_tareas.size();i++){
+
+                                    System.out.println("numero de la tarea: "+ (i+1));
+                                    System.out.println("Titulo: "+ lista_tareas.get(i).getNombre());
+                                    System.out.println("Descripcion: "+ lista_tareas.get(i).getDescripcion());
+                                    System.out.println("Lugar: "+ lista_tareas.get(i).getLugar());
+                                    System.out.println("Fecha inicio: "+ lista_tareas.get(i).getFechaInicio().format(f));
+                                    System.out.println("Fecha fin: "+lista_tareas.get(i).getFechaFin().format(f));
+                                    for(int j=0;j<lista_tareas.get(i).tareas.size();j++){
+                                        System.out.println("Tarea numero: "+(j+1));
+                                        System.out.println(lista_tareas.get(i).tareas.get(j));
+                                    }
+                                    System.out.println("");
+                                    hay_elemento=1;
+
+                                }
+                                if(hay_elemento==0){
+
+                                    System.out.println("Lo sentimos pero no hay elementos tipo tarea almacenados");
+                                }
+                                hay_elemento=0;
+
                                 break;
                             case 2:
                                 break;
                             case 3:
-                                int hay_elemento=0;
+                                
                                 for(int i=0; i<lista_recordatorio.size();i++){
-                                    System.out.println("numero de recordatorio: "+ ((lista_recordatorio.get(i).getId())+1));
+                                    System.out.println("numero de recordatorio: "+ (i+1));
                                     System.out.println("Titulo: "+ lista_recordatorio.get(i).getNombre());
                                     System.out.println("Descripcion: "+ lista_recordatorio.get(i).getDescripcion());
                                     System.out.println("Lugar: "+ lista_recordatorio.get(i).getLugar());
