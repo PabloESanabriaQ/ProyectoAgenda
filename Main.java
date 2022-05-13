@@ -99,10 +99,11 @@ public class Main {
                                 cantidad_tareas=entrada.nextInt();
                                 entrada.nextLine();
                                 for(int i=0; i<cantidad_tareas;i++){
-
-                                    tareas.add(entrada.nextLine());///modificar xd
+                                    System.out.println("Tarea "+(i+1)+":");
+                                    tareas.add(i ,entrada.nextLine());
 
                                 }
+                                lista_tareas.add(new Tareas(id_tareas, nombre, descripcion, lugar, fecha_inicio, fecha_final, tareas));
 
 
 
