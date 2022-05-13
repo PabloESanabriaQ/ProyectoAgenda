@@ -1,11 +1,9 @@
-////cambio
-import java.time.LocalDateTime;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
-import java.util.*;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in); 
@@ -25,11 +23,12 @@ public class Main {
         int dia, mes, año;
         LocalDate fecha;
         LocalTime hora= LocalTime.of(0,0);
+        LocalDateTime c= LocalDateTime.now();
         ///Clases para comparar
         Agenda comparar_agenda = new Agenda(0, "", "", "", fecha_inicio);
         
-        ///Evento comparar_evento = new Evento(5, "", "", "",invitados, c,c);
-        //Tareas comparar_tarea = new Tareas(0, "", "", "", c,c,tareas);
+        Evento comparar_evento = new Evento(5, "", "", "",invitados, c,c);
+        Tareas comparar_tarea = new Tareas(0, "", "", "", c,c,tareas);
         
 
         ///Forma de presentar la fecha y hs
