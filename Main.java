@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in); 
-        ArrayList<Agenda> lista_recordatorio=new ArrayList<>();///arraylist donde se almacena todos los elementos
+        ArrayList<Agenda> lista_recordatorio=new ArrayList<>();///arraylist donde se almacena elementos tipo agenda
+        ArrayList<Evento> lista_evento= new ArrayList<>();///Arraylist donde se almacena elementos tipos evento
+        ArrayList<Tareas> lista_tareas=new ArrayList<>();///Arraylist donde se almacenan elementos tipos tareas
         ////parametros de los constructores
         ArrayList<String> invitados = new ArrayList<>();
         ArrayList<String> tareas = new ArrayList<>();
@@ -20,15 +22,13 @@ public class Main {
         id_recordatorio = 0;
         id_tareas = 0;
         id_evento = 0;
-        int dia, mes, año;
+        int dia, mes, año;///dia mes año que le pido al usuario
+        int horas, minutos;///horas y minutos que le pido al usuario
+        int cantidad_tareas;///la cantidad de tareas que va almacenar e usuario en la arraylist tareas de la clase tareas
         LocalDate fecha;
         LocalTime hora= LocalTime.of(0,0);
         LocalDateTime c= LocalDateTime.now();
-        ///Clases para comparar
-        Agenda comparar_agenda = new Agenda(0, "", "", "", fecha_inicio);
         
-        Evento comparar_evento = new Evento(5, "", "", "",invitados, c,c);
-        Tareas comparar_tarea = new Tareas(0, "", "", "", c,c,tareas);
         
 
         ///Forma de presentar la fecha y hs
@@ -57,13 +57,13 @@ public class Main {
                     entrada.nextLine();
                         switch (opcion){
                             case 1:
-                                System.out.println("Dime el titulo de la tarea: ");
+                                System.out.println("Dime el titulo del conjunto de tareas: ");
                                 nombre = entrada.nextLine();
-                                System.out.println("Dime el recordatorio");
+                                System.out.println("Dime la descripcion del conjunto de tareas");
                                 descripcion = entrada.nextLine();
-                                System.out.println("Dime el lugar del recordatorio");///capaz que no va para recordatorio
+                                System.out.println("Dime el lugar donde se realizara las tarea");///capaz que no va para recordatorio
                                 lugar = entrada.nextLine();
-                                System.out.println("Dime la fecha del recordatorio:");
+                                System.out.println("Dime la fecha de inicio de las tareas:");
                                 System.out.println("año");
                                 año = entrada.nextInt();
                                 entrada.nextLine();
@@ -74,6 +74,39 @@ public class Main {
                                 dia = entrada.nextInt();
                                 entrada.nextLine();
                                 fecha = LocalDate.of(año,mes,dia);///pongo la fecha ingresada en un variable localdate
+                                fecha_inicio=LocalDateTime.of(fecha,hora);
+                                System.out.println("Dime la fecha Final de las tareas:");
+                                System.out.println("año");
+                                año = entrada.nextInt();
+                                entrada.nextLine();
+                                System.out.println("mes");
+                                mes = entrada.nextInt();
+                                entrada.nextLine();
+                                System.out.println("dia");
+                                dia = entrada.nextInt();
+                                entrada.nextLine();
+                                fecha = LocalDate.of(año,mes,dia);
+                                System.out.println("Dime la hs limite a terminar las tareas");
+                                System.out.println("HS: ");
+                                horas= entrada.nextInt();
+                                entrada.nextLine();
+                                System.out.println("Minutos: ");
+                                minutos=entrada.nextInt();
+                                entrada.nextLine();
+                                hora=LocalTime.of(horas,minutos);
+                                fecha_final=LocalDateTime.of(fecha,hora);
+                                System.out.println("Dime la cantidad de tareas que vas a realizar en el periodo de tiempo especificado");
+                                cantidad_tareas=entrada.nextInt();
+                                entrada.nextLine();
+                                for(int i=0; i<cantidad_tareas;i++){
+
+                                    tareas.add(entrada.nextLine());///modificar xd
+
+                                }
+
+
+
+                                
                                 
 
             
@@ -157,7 +190,6 @@ public class Main {
                             case 3:
                                 int hay_elemento=0;
                                 for(int i=0; i<lista_recordatorio.size();i++){
-                                    if(comparar_agenda.getClass() == lista_recordatorio.get(i).getClass()){
                                     System.out.println("numero de recordatorio: "+ ((lista_recordatorio.get(i).getId())+1));
                                     System.out.println("Titulo: "+ lista_recordatorio.get(i).getNombre());
                                     System.out.println("Descripcion: "+ lista_recordatorio.get(i).getDescripcion());
@@ -165,13 +197,12 @@ public class Main {
                                     System.out.println("Fecha: "+ lista_recordatorio.get(i).getFechaInicio().format(f));
                                     System.out.println("");
                                     hay_elemento = 1;
-                                    }
-
                                 }
                                 
                                 if(hay_elemento == 0){
                                     System.out.println("Lo sentimos, no hay un recordatorio en esta lista");
                                 }
+                                hay_elemento=0;
                                 
                                 break;
                             default:
