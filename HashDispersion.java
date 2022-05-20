@@ -28,9 +28,8 @@ public class HashDispersion {
         return mEntero;
     }
 
-    static int dispersarClave(long clave, int m){
-        return Math.toIntExact(clave % m);
+    static int dispersarClave(Double clave, int m){
+        return (int) (clave % m);
     }
-    
-    
+
 }
