@@ -7,7 +7,7 @@ public class HashDispersion {
     static boolean esPrimo(int m){
         //Vamos a comprobar si un número m es primo.
         //Utilizamos la raíz de M (descartando el decimal)
-        //es divisible por los números primos anteriores a su raíz, de ser así NO será primo
+        //Si es divisible por los números primos anteriores a su raíz NO será primo
         //de lo contrario, es primo.
         int raizDeM = (int) Math.sqrt(m);
         for(int i = 2; i < raizDeM; i++){
