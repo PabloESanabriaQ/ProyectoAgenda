@@ -6,7 +6,7 @@ public class MitadDelCuadrado {
     //Así, si el rango es de 0 ... 999 se extraen tres dígitos.
     // SIEMPRE LOS QUE ESTÁN EN LAS MISMAS POSICIONES.
 
-    static int dispersarClave(Double clave, int m){
+    static int dispersarClave(Double clave){
         String n;
         int claveFinal;
         //Elevo la clave al cuadrado, luego la redondeo para eliminar decimales.
