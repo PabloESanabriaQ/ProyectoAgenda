@@ -19,7 +19,7 @@ public class MitadDelCuadrado {
         //(cantidad digitos dictados por la longitud de m) 
         //y luego lo parseo a int para obtener mi clave final.
         claveFinal = Integer.parseInt(n.substring(4, cantidadDigitos));
-        if(claveFinal > m){
+        while(claveFinal > m){
             claveFinal-=m;
         }
         return claveFinal;
